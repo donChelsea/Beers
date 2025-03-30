@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import androidx.room.Room
 import com.example.codesample.BuildConfig.BASE_URL
+import com.example.codesample.data.repository.BeerRepositoryImpl
 import com.example.codesample.data.source.local.BeerDatabase
 import com.example.codesample.data.source.local.model.BeerEntity
 import com.example.codesample.data.source.remote.BeerApi
 import com.example.codesample.data.source.remote.RemoteMediator
+import com.example.codesample.domain.repository.BeerRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -60,8 +63,8 @@ object DataModule {
     fun provideBeerPager(
         db: BeerDatabase,
         api: BeerApi,
-    ): Pager<Int, BeerEntity> {
-        return Pager(
+    ): Pager<Int, BeerEntity> =
+        Pager(
             config = PagingConfig(pageSize = 10),
             remoteMediator = RemoteMediator(
                 db = db,
@@ -71,5 +74,11 @@ object DataModule {
                 db.dao.pagingSource()
             }
         )
-    }
+
+    @Provides
+    @Singleton
+    fun provideBeerRepository(
+        pager: Pager<Int, BeerEntity>
+    ): BeerRepository =
+        BeerRepositoryImpl(pager)
 }

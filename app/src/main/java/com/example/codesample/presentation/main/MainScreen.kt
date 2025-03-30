@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import coil.compose.AsyncImage
+import com.example.codesample.BuildConfig.IMAGES_BASE_URL
 import com.example.codesample.domain.model.Beer
 
 @Composable
@@ -91,7 +92,7 @@ fun BeerItem(
                 .padding(16.dp)
         ) {
             AsyncImage(
-                model = beer.image,
+                model = IMAGES_BASE_URL + beer.image,
                 contentDescription = beer.name,
                 modifier = Modifier
                     .weight(1f)

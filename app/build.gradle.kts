@@ -23,6 +23,7 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://punkapi.online/v3/\"")
+            buildConfigField("String", "IMAGES_BASE_URL", "\"https://punkapi.online/v3/images/\"")
         }
         release {
             isMinifyEnabled = false
