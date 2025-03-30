@@ -5,5 +5,5 @@ import com.example.codesample.domain.model.Beer
 import kotlinx.coroutines.flow.Flow
 
 interface BeerRepository {
-    fun beerFlow(): Flow<PagingData<Beer>>
+    fun getBeerFlow(): Flow<PagingData<Beer>>
 }

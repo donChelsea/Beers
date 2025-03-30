@@ -16,7 +16,7 @@ class BeerRepositoryImpl @Inject constructor(
     private val pager: Pager<Int, BeerEntity>
 ) : BeerRepository {
 
-    override fun beerFlow(): Flow<PagingData<Beer>> =
+    override fun getBeerFlow(): Flow<PagingData<Beer>> =
         pager.flow
             .transform { pagingData ->
                 val transformedData = pagingData.map { it.toDomain() }

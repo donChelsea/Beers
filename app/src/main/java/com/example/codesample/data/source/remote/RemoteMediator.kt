@@ -10,9 +10,10 @@ import com.example.codesample.data.source.local.model.BeerEntity
 import kotlinx.coroutines.delay
 import retrofit2.HttpException
 import java.io.IOException
+import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class RemoteMediator(
+class RemoteMediator @Inject constructor(
     private val db: BeerDatabase,
     private val api: BeerApi,
 ): RemoteMediator<Int, BeerEntity>() {

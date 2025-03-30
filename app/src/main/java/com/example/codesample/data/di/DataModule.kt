@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import androidx.room.Room
 import com.example.codesample.BuildConfig.BASE_URL
 import com.example.codesample.data.repository.BeerRepositoryImpl
@@ -56,7 +55,9 @@ object DataModule {
             context,
             BeerDatabase::class.java,
             "beer_database"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
 
     @Provides
     @Singleton

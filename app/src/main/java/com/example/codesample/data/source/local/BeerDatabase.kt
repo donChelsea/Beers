@@ -6,7 +6,7 @@ import com.example.codesample.data.source.local.model.BeerEntity
 
 @Database(
     entities = [BeerEntity::class],
-    version = 1
+    version = 2
 )
 abstract class BeerDatabase: RoomDatabase() {
     abstract val dao: BeerDao
