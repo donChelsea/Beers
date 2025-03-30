@@ -11,8 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.codesample.presentation.main.MainScreen
+import com.example.codesample.presentation.main.MainViewModel
 import com.example.codesample.ui.theme.CodeSampleTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +26,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             CodeSampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    val viewModel = hiltViewModel<MainViewModel>()
+                    val beers = viewModel.beerFlow.collectAsLazyPagingItems()
+                    MainScreen(
+                        beers = beers,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

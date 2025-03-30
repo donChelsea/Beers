@@ -63,7 +63,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-
     // Compose
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
@@ -82,7 +81,6 @@ dependencies {
     // Paging
     implementation("androidx.paging:paging-runtime:3.3.6")
     implementation("androidx.paging:paging-compose:3.3.6")
-
 
     // Retrofit + Gson + OkHttp
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
