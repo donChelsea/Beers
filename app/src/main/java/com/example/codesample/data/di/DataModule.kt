@@ -39,9 +39,12 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideBeerApi(): BeerApi =
+    fun provideBeerApi(
+        okHttpClient: OkHttpClient
+    ): BeerApi =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(BeerApi::class.java)

@@ -32,7 +32,7 @@ class MainViewModel @Inject constructor(
 
     fun handleAction(action: MainUiAction) {
         when (action) {
-            is MainUiAction.OnSavePosition -> _state.update { it.copy(scrollPosition = action.position) }
+            is MainUiAction.OnSaveScrollPosition -> _state.update { it.copy(scrollPosition = action.position) }
         }
     }
 }

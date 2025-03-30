@@ -42,7 +42,7 @@ fun MainScreen(
             lazyListState.firstVisibleItemIndex
         }
             .collectLatest { index ->
-                viewModel.handleAction(MainUiAction.OnSavePosition(index))
+                viewModel.handleAction(MainUiAction.OnSaveScrollPosition(index))
             }
     }
 
@@ -62,10 +62,7 @@ fun MainScreen(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        items(
-            count = beers.itemCount,
-            key = { it }
-        ) { index ->
+        items(beers.itemCount) { index ->
             val beer = beers[index]
             beer?.let {
                 BeerItem(it)
