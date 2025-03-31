@@ -16,8 +16,9 @@ Android 7 SDK Level 24 (Nougat) or higher.
 - Data Persistence using Room
   - Caching data to local storage for offline support
 - Networking Integration using Retrofit + Gson Converter + OkHttp
-  - Collecting data stream from beer API
+  - Collecting and parsing the data stream
   - Asynchronous operations with Coroutines + Flow to optimize performance
+  - Monitor network traffic
 - Dependency Injection using Hilt
   - Hide implementation details, decrease coupling, increase testability
 - Clean architecture using SOLID principles
