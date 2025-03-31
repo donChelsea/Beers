@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -56,6 +57,19 @@ fun MainScreen(
         }
     }
 
+    MainContent(
+        modifier = modifier,
+        lazyListState = lazyListState,
+        beers = beers
+    )
+}
+
+@Composable
+fun MainContent(
+    modifier: Modifier = Modifier,
+    lazyListState: LazyListState,
+    beers: LazyPagingItems<BeerUiModel>,
+) {
     LazyColumn(
         modifier = modifier,
         state = lazyListState,
@@ -69,7 +83,6 @@ fun MainScreen(
             }
         }
 
-        // Handle loading and error states
         when (beers.loadState.refresh) {
             is LoadState.Loading -> {
                 item {
